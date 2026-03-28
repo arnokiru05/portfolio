@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <title>ARNOLD KIPTOO KIRUI - DATA ANALYST</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link href="https://fonts.googleapis.con/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="style2.css"/>
+    </head>
+
+    <body>
+        <!--NAV-->
+        <nav>
+            <div class="nav-inner">
+                <span class="logo">KIPTOO KIRUI</span>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#github">GitHub</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--Hero-->
+        <header id="about">
+            <div class="container">
+                <span class="badge">Open to work. Data Analyst</span>
+                <h1>Turning raw data<br>into clear decisions</h1>
+                <p class="highlight">Data enthusiast with a speciality in Python, SQL & Power BI, turning complex datasets into actionable insights. Passionate about using analytics to solve real-world problems and drive impact.</p>            
+                <div class="hero-btns">
+                    <a href="#projects" class="btn-primary">View my work</a>
+                    <a href="https://docs.google.com/document/d/16qwndg_Y3NR85MIGogt-y2CpiDUjIE80BeK725acJSs/edit?usp=sharing" class="btn-secondary">Download CV</a>
+                </div>
+            </div>
+        </header>
+
+        <!--STATS-->
+        <section class="stats-bar">
+            <div class="stat"><span class="stat-num">7+ </span><span class="stat-label">Projects</span></div>
+            <div class="stat"><span class="stat-num">1+</span ><span class="stat-label">Years exp.</span></div>
+            <div class="stat"><span class="stat-num">4 </span ><span class="stat-label">Tools</span></div>
+            <div class="stat"><span class="stat-num">1 </span ><span class="stat-label">Certifications</span></div>
+        </section>
+
+        <!--SKILLS-->
+        <section id="skills" class="section">
+            <div class="container">
+                <p class="section-label">Skills</p>
+                <h2>Tools & Technologies</h2>
+                <div class="skills-grid">
+                    <div class="skill accent">SQL</div>
+                    <div class="skill accent">Python</div>
+                    <div class="skill accent">Power BI</div>
+                    <div class="skill accent">Excel</div>
+                    <div class="skill">Data cleaning</div>
+                    <div class="skill">ETL</div>
+                    <div class="skill">Data validation</div>
+                    <div class="skill">Data Collection & Scraping</div>
+                    <div class="skill">Dashboard design</div>
+                    <div class="skill">Data Visualization and Storytelling</div>
+                </div>
+            </div>
+        </section>
+
+        <!--PROJEECTS-->
+        <section id="projects" class="section alt">
+            <div class="container">
+                <p class="section-label">Work</p>
+                <h2>Featured projects</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <div class="project-visual v1"></div>
+                        <div class="project-body">
+                            <h3>Weather app</h3>
+                            <p>Built a live weather application that fetches real-time data from a public API and displays current conditions by city. Demonstrates API integration and dynamic DOM manipulation.</p>
+                            <div class="tags">
+                                <span>HTML </span><span> CSS </span><span> JavaScript </span> 
+                            </div>
+                            <a href="#" class="project-link">View project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-visual v2"></div>
+                        <div class="project-body">
+                            <h3>Hotel Security Analysis</h3>
+                            <p>Desined an interactive Power BI dashboard analysing security incident KPIs across departments in a hotel group for 2024-2025. Enabled management to identify patterns and allocate resources more effectively. </p>
+                            <div class="tags">
+                                <span>Power BI </span><span> DAX </span><span> Excel </span><span> Data handling.</span>
+                            </div>
+                            <a href= "#" class="https://github.com/arnokiru05/Hotel_incidents_analysis">View project</a>                            
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-visual v3"></div>
+                        <div class="project-body">
+                            <h3>RAG Chatbot</h3>
+                            <p>Built a local retrieval-augmented generation chatbot using Mistral's API and ChromaDB for vector storage. Uses transformer-based embeddings and LangChain to return contextually accurate answers, served through a Gradio interface. </p>
+                            <div class="tags">
+                                <span>Python </span><span> ChromaDB </span><span> Langchain </span><span> Gradio.</span>
+                            </div>
+                            <a href="#" class="https://github.com/arnokiru05/RAG_CHATBOT">View project</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-visual v4"></div>
+                        <div class="project-body">
+                            <h3>Default Risk ML Model</h3>
+                            <p>Developed a Linear Regression model to predict loan default risk. Pipeline covers exploratory data analysis, outlier detection, feature standardisation and model evaluation using AUC, with hyprparameter tuning via grid search.</p>
+                            <div class="tags">
+                                <span>Python </span><span> Statistics </span><span> SciKit-Learn </span><span> Data handling.</span>
+                            </div>
+                            <a href="#" class="https://github.com/arnokiru05/RAG_CHATBOT">View project</a>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+
+        <!--GITHUB-->
+        <section id="github" class="section">
+            <div class="container">
+                <p class="section-label">Open source</p>
+                <h2>GitHub repositories</h2>
+                <div id="repos-grid" class="projects-grid">
+                    <p id="repos-loading" style="color:#78614a;font-size:14px;">
+                        Loading repositories...
+                    </p>
+                </div>
+            </div>
+        </section>
+    
+        <!--CONTACT-->
+        <section id="contact" class="section alt">
+            <div class="container">
+                <p class="section-label">Contact</p>
+                <h2>Get in touch</h2>
+                <p class="contact-intro">I'm currently open to freelance projects and full-time roles. Let's talk.</p>
+                <div class="contact-grid">
+                    <a href="mailto:arnokiru19@gmail.com" class="contact-card">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-val">arnokiru19@gmail.com</span>
+                    </a>
+                    <a href="#" class="contact-card">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-val">linkedin.com/in/arnokiru05</span>
+                    </a>
+                    <a href="#" class="contact-card">
+                        <span class="contact-label">Personal Phone</span>
+                        <span class="contact-val">+254769567516</span>
+                    </a>
+                </div>
+            </div>
+            <form id="contact-form" class="contact-form">
+                <div class="form-row">
+                    <input type="text" id="fname" placeholder="Your name" required />
+                    <input type="email" id="femail" placeholder="Your email" required />
+                </div>
+                 <textarea id="fmessage" placeholder="Tell me about the role or project..." rows="4" required></textarea>
+                 <button type="submit">Send message</button>
+                 <p id="form-status" class="form-status"></p>
+            </form>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>Built with HTML & CSS · ARNOLD KIPTOO KITUI · 2026</p>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>
