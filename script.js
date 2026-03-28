@@ -4,6 +4,22 @@ const sections = document.querySelectorAll('section[id], header[id]')
 // Grab all nav links
 const navLinks = document.querySelectorAll('nav a')
 
+// === Mobile menu toggle ===
+const menuToggle = document.querySelector('.menu-toggle')
+const navMenu = document.querySelector('nav ul')
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = navMenu.classList.toggle('open')
+  menuToggle.setAttribute('aria-expanded', isOpen)
+})
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('open')
+    menuToggle.setAttribute('aria-expanded', false)
+  })
+})
+
 // Every time the user scrolls, run this function
 window.addEventListener('scroll', () => {
 
