@@ -126,3 +126,39 @@ async function fetchRepos(params) {
     }
 
 fetchRepos()
+
+//animated stats counter
+const stats= document.querySelectorAll(".stat-num")
+
+const countUp=(element)=>{
+  //get target numbet from text content
+  const target=parseInt(element.textContent)//parseInt strips any non-numeric characters
+  const duration=2000
+  const stepTime=50
+  const steps=duration/stepTime
+  const increment=target/steps
+  let current=0
+
+  const timer=setInterval(()=>{
+    current+=increment
+
+    if(current>=target){
+      element.textContent=target+(element.dataset.suffix || "")//use the suffix if it exists otherwise use an empty string
+      clearInterval(timer)
+    }else{element.textContent=Math.floor(current)+(element.dataset.suffix || "")}
+  },stepTime)
+}
+
+//trigger counter when stats come into view
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if (entry.isIntersecting){
+      stats.forEach(stat=>countUp(stat))
+      observer.disconnect()
+    }
+  })
+},{threshold:0.5})
+
+//observe the stats bar
+const statsBar=document.querySelector(".stats-bar")
+if (statsBar) observer.observe(statsBar)
