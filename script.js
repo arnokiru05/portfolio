@@ -95,7 +95,7 @@ async function fetchRepos(params) {
     try{
         //most recently updated
         const response=await fetch(
-            `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=5`)
+            `https://api.github.com/users/${arnokiru05}/repos?sort=updated&per_page=5`)
             if(!response.ok)throw new Error("Failed to fetch repos")
             const repos=await response.json()
             loading.remove()
