@@ -113,37 +113,52 @@ window.addEventListener('scroll', () => {
   })
 })
 
-//contact form
+//emailjs contact form
+emailjs.init('-zR8OlSuCoViqM0BB')
+
 const form = document.getElementById('contact-form')
 const status = document.getElementById('form-status')
 
-form.addEventListener("submit",(e)=>{
-    //stop the page from reloading
-    e.preventDefault()
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
 
-    //read and clean the valus from each field
-    const name=document.getElementById("fname").value.trim()
-    const email=document.getElementById("femail").value.trim()
-    const message=document.getElementById("fmessage").value.trim()
+  const name = document.getElementById('fname').value.trim()
+  const email = document.getElementById('femail').value.trim()
+  const message = document.getElementById('fmessage').value.trim()
 
-    //validate if all fields are filled
-    if(!name||!email||!message){
-        status.textContent="Please fill in all fields."
-        status.style.color="#dc2626"
+  if (!name || !email || !message) {
+    status.textContent = 'Please fill in all fields.'
+    status.style.color = '#dc2626'
+    return
+  }
+
+  const btn = form.querySelector('button')
+  btn.textContent = 'Sending...'
+  btn.disabled = true
+
+  emailjs.send(
+    'portfolio_service',
+    'portfolio_template',
+    {
+      from_name: name,
+      from_email: email,
+      message: message
     }
-
-    //simulate sending, disable btn while sending
-    const btn=form.querySelector("button")
-    btn.textContent="Sending"
-    btn.disabled=true
-
-    setTimeout(()=>{
-        status.textContent="Message sent.I will get back to you soon."
-        status.style.color="#d97706"
-        form.reset()
-        btn.textContent="Send message"
-        btn.disabled=false
-    }, 1500)
+  )
+  .then(() => {
+    status.textContent = 'Message sent. I will get back to you soon.'
+    status.style.color = '#0d9488'
+    form.reset()
+    btn.textContent = 'Send message'
+    btn.disabled = false
+  })
+  .catch((err) => {
+    console.log('EmailJS error:', err)
+    status.textContent = 'Something went wrong. Please email me directly.'
+    status.style.color = '#dc2626'
+    btn.textContent = 'Send message'
+    btn.disabled = false
+  })
 })
 
 //github repos fetch
@@ -247,3 +262,5 @@ const observer=new IntersectionObserver((entries)=>{
 //observe the stats bar
 const statsBar=document.querySelector(".stats-bar")
 if (statsBar) observer.observe(statsBar)
+
+  
