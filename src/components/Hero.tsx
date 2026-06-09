@@ -24,11 +24,6 @@ export const Hero = () => {
       <div className="container">
         <div style={styles.heroGrid} className="animate-fade-in">
           <div style={styles.content}>
-            <div style={styles.badge} className="badge">
-              <span style={styles.statusDot}></span>
-              System Online: Data Analyst
-            </div>
-            
             <h1 style={styles.title}>
               <span style={styles.iconWrapper}><Terminal size={32} color="var(--accent-primary)" /></span>
               <br />
@@ -69,7 +64,7 @@ export const Hero = () => {
 
 const styles = {
   header: {
-    padding: '10rem 0 8rem 0',
+    padding: '5rem 0 8rem 0',
     minHeight: '85vh',
     display: 'flex',
     alignItems: 'center',

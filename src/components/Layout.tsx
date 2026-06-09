@@ -7,10 +7,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div style={styles.wrapper}>
       <Navbar />
-      <main style={styles.main}>
+      <main style={styles.main} className="sb-offset">
         {children}
       </main>
-      <footer style={styles.footer}>
+      <footer style={styles.footer} className="sb-offset">
         <div className="container" style={styles.footerContent}>
           <div style={styles.brand}>
             <span className="mono" style={styles.logoText}>ArnoKirui.dev</span>

@@ -149,3 +149,20 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border-highlight);
 }
+
+/* Sidebar content offset — only on desktop */
+@media (min-width: 1024px) {
+  .sb-offset {
+    margin-left: 260px;
+  }
+
+  /* No top navbar on desktop, reduce hero top padding */
+  .sb-offset header {
+    padding-top: 3rem !important;
+  }
+
+  /* Keep container from getting too wide */
+  .container {
+    max-width: 900px;
+  }
+}
