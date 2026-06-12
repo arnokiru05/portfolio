@@ -3,6 +3,7 @@ import { Layout } from './components/Layout';
 import { Hero } from './components/Hero';
 import { Stats } from './components/Stats';
 import { Skills } from './components/Skills';
+import { Certifications } from './components/Certifications';
 import { Projects } from './components/Projects';
 import { GithubRepos } from './components/GithubRepos';
 import { Contact } from './components/Contact';
@@ -42,6 +43,7 @@ function App() {
       <Skills />
       <Projects />
       <GithubRepos />
+      <Certifications />
       <Contact />
     </Layout>
   );

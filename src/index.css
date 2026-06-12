@@ -151,6 +151,113 @@ a:hover {
 }
 
 /* Sidebar content offset — only on desktop */
+/* Featured Projects — sticky stack scroll */
+.projects-section {
+  padding-bottom: 4rem;
+}
+
+.projects-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-bottom: 30vh;
+}
+
+.projects-stack-card {
+  position: sticky;
+  top: calc(5rem + var(--stack-index, 0) * 1.25rem);
+  z-index: calc(var(--stack-index, 0) + 1);
+  padding: 1.25rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.projects-stack-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects-stack-card--visible:nth-child(1) { transition-delay: 0s; }
+.projects-stack-card--visible:nth-child(2) { transition-delay: 0.08s; }
+.projects-stack-card--visible:nth-child(3) { transition-delay: 0.16s; }
+.projects-stack-card--visible:nth-child(4) { transition-delay: 0.24s; }
+.projects-stack-card--visible:nth-child(5) { transition-delay: 0.32s; }
+
+.projects-stack-inner {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Certifications */
+.cert-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.cert-carousel-card-inner {
+  min-height: 320px;
+}
+
+.cert-card button:hover .cert-thumb-overlay,
+.cert-card button:focus-visible .cert-thumb-overlay {
+  opacity: 1;
+}
+
+.cert-card button:hover,
+.cert-card button:focus-visible {
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.cert-nav-btn:hover {
+  background: var(--accent-primary) !important;
+  color: white !important;
+  border-color: var(--accent-primary) !important;
+}
+
+.cert-nav-btn.left { left: 0; }
+.cert-nav-btn.right { right: 0; }
+
+.cert-carousel-wrap {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .cert-card-body,
+  .cert-carousel-card-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-carousel-wrap {
+    height: auto !important;
+    min-height: 520px;
+  }
+
+  .cert-nav-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-stack {
+    padding-bottom: 2rem;
+  }
+
+  .projects-stack-card {
+    position: relative;
+    top: auto;
+  }
+
+  .projects-stack-inner {
+    flex-direction: column;
+  }
+}
+
+/* Sidebar content offset — only on desktop */
 @media (min-width: 1024px) {
   .sb-offset {
     margin-left: 260px;
@@ -164,5 +271,9 @@ a:hover {
   /* Keep container from getting too wide */
   .container {
     max-width: 900px;
+  }
+
+  .projects-stack-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
   }
 }

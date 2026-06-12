@@ -50,7 +50,7 @@ export const Contact = () => {
               Accepting new projects
             </div>
             
-            <h2 style={styles.title}>Initialize Connection</h2>
+            <h2 style={styles.title}>Get in touch</h2>
             <p style={styles.description}>
               Currently open for full-time roles or freelance data analysis projects. 
               Drop a message to discuss how we can extract value from your data.

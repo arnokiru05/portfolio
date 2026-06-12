@@ -19,17 +19,38 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const visibleSection = entries.find(entry => entry.isIntersecting);
-      if (visibleSection) setActiveSection(visibleSection.target.id);
-    }, { threshold: 0.3, rootMargin: '-10% 0px -50% 0px' });
+    const sectionIds = [
+      'about',
+      'skills',
+      'projects',
+      'opensource',
+      'certifications',
+      'contact',
+    ];
 
-    ['about', 'skills', 'projects', 'github', 'contact'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    const updateActiveSection = () => {
+      // Activation line: ~35% from top of viewport (works well with fixed sidebar)
+      const marker = window.scrollY + window.innerHeight * 0.35;
 
-    return () => observer.disconnect();
+      let current = sectionIds[0];
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (top <= marker) current = id;
+      }
+
+      setActiveSection(current);
+    };
+
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -40,11 +61,12 @@ export const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'About',    href: '#about',    id: 'about' },
-    { name: 'Skills',   href: '#skills',   id: 'skills' },
-    { name: 'Projects', href: '#projects', id: 'projects' },
-    { name: 'GitHub',   href: '#github',   id: 'github' },
-    { name: 'Contact',  href: '#contact',  id: 'contact' },
+    { name: 'About',            href: '#about',           id: 'about' },
+    { name: 'Skills',           href: '#skills',          id: 'skills' },
+    { name: 'Featured Projects', href: '#projects',       id: 'projects' },
+    { name: 'Open Source',      href: '#opensource',      id: 'opensource' },
+    { name: 'Certifications',   href: '#certifications',  id: 'certifications' },
+    { name: 'Contact',          href: '#contact',         id: 'contact' },
   ];
 
   return (
@@ -100,10 +122,9 @@ export const Navbar = () => {
         <div className="container mb-nav-inner">
           <div className="mb-logo-row">
             <img
-              src="/me.png"
+              src="/arnold-profile.png"
               alt="Profile"
               className="mb-pic"
-              onError={(e) => { (e.target as HTMLImageElement).src = '/personal-photo.png'; }}
             />
             <span className="mono mb-name">ArnoKirui.dev</span>
           </div>

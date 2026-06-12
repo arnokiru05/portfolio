@@ -37,7 +37,7 @@ export const Hero = () => {
             
             <div style={styles.actions}>
               <a href="#projects" style={styles.primaryBtn}>
-                Execute Analysis
+                View Projects
                 <ArrowRight size={16} />
               </a>
               <a 
@@ -54,7 +54,7 @@ export const Hero = () => {
           
           <div style={styles.imageWrapper}>
             <div style={styles.imageGlow}></div>
-            <img src="/me.png" alt="Arnold Kirui" style={styles.heroImage} onError={(e) => { (e.target as HTMLImageElement).src = '/personal-photo.png'; }} />
+            <img src="/arnold-profile.png" alt="Arnold Kirui" style={styles.heroImage} />
           </div>
         </div>
       </div>
@@ -108,11 +108,10 @@ const styles = {
     maxWidth: '350px',
     aspectRatio: '1/1',
     objectFit: 'cover' as const,
-    objectPosition: 'center 35%', // Zooms in slightly and shifts down to crop out the cap
-    borderRadius: '50%', // Make it a perfect circle to help with the "professional" look
+    objectPosition: 'center 30%',
+    borderRadius: '50%',
     border: '4px solid var(--border-color)',
     boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-    transform: 'scale(1.1)', // Slight zoom to further hide the top edge
     transition: 'transform 0.3s ease',
   },
   badge: {

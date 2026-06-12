@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ExternalLink, Clock, Lock } from 'lucide-react';
 import { FaGithub, FaLock } from 'react-icons/fa';
 
-// ─── Project type definition ─────────────────────────────────────────────────
 type ProjectStatus = 'live' | 'in-progress' | 'github-only';
 
 interface Project {
@@ -11,30 +10,23 @@ interface Project {
   image: string;
   tags: string[];
   status: ProjectStatus;
-  liveUrl?: string;       // Fill in when status === 'live'
-  githubUrl?: string;     // Fill in when source is public
-  privateRepo?: boolean;  // Set true when live but source is private
+  liveUrl?: string;
+  githubUrl?: string;
+  privateRepo?: boolean;
 }
 
-// ─── Projects data ────────────────────────────────────────────────────────────
-// status guide:
-//   'live'        → project has a deployed URL you can visit  → shows "Live Demo" button
-//   'in-progress' → currently being built / not deployed yet  → shows "In Progress" badge
-//   'github-only' → finished but no web front-end (ML, BI)   → shows only "Source Code"
 const projectsData: Project[] = [
   {
     title: 'Weather App',
-    description:
-      'A live weather application that fetches real-time data from OpenWeatherMap API and displays current conditions by city, featuring a 5-day forecast, dynamic backgrounds and live local time.',
+    description: 'Live weather · 5-day forecast · city search',
     image: 'weather.png',
-    tags: ['JavaScript', 'Fetch API', 'DOM Manipulation'],
+    tags: ['JavaScript', 'Fetch API', 'DOM'],
     status: 'live',
     liveUrl: 'https://arnokiru05.github.io/weather-app',
   },
   {
     title: 'Aesthetic Engine',
-    description:
-      '[🚧 WORK IN PROGRESS] An intelligence platform that makes visual quality measurable. Upload a photo to get a neural aesthetic quality score (0–10), an eye-tracking saliency heatmap, strategic CLIP-powered SEO tags, and an artistic style identity profiled across your entire body of work — giving creators and marketers the data before they spend the budget.',
+    description: 'Aesthetic scoring · saliency heatmaps · CLIP tags · neural audit',
     image: 'aesthetic-engine.png',
     tags: ['Python', 'PyTorch', 'CLIP', 'FastAPI', 'Next.js'],
     status: 'in-progress',
@@ -43,8 +35,7 @@ const projectsData: Project[] = [
   },
   {
     title: 'Hotel Security Analysis',
-    description:
-      'Interactive Power BI dashboard analysing security incident KPIs across departments in a hotel group for 2024-2025. Enabled management to identify patterns and allocate resources effectively.',
+    description: 'Power BI · incident KPIs · department trends',
     image: 'hotel-security.png',
     tags: ['Power BI', 'DAX', 'Excel', 'Data Modeling'],
     status: 'github-only',
@@ -52,8 +43,7 @@ const projectsData: Project[] = [
   },
   {
     title: 'RAG Chatbot',
-    description:
-      'Local retrieval-augmented generation chatbot using Mistral\'s API and ChromaDB for vector storage. Uses transformer-based embeddings and LangChain to return contextually accurate answers.',
+    description: 'Local RAG · ChromaDB · LangChain · Mistral',
     image: 'rag-chatbot.png',
     tags: ['Python', 'ChromaDB', 'LangChain', 'Gradio'],
     status: 'github-only',
@@ -61,8 +51,7 @@ const projectsData: Project[] = [
   },
   {
     title: 'Default Risk ML Model',
-    description:
-      'Linear Regression model to predict loan default risk. Pipeline covers EDA, outlier detection, feature standardisation and model evaluation using AUC with hyperparameter tuning via grid search.',
+    description: 'Loan default prediction · EDA · linear regression · AUC',
     image: 'default-risk.png',
     tags: ['Python', 'SciKit-Learn', 'Statistics', 'EDA'],
     status: 'github-only',
@@ -70,7 +59,6 @@ const projectsData: Project[] = [
   },
 ];
 
-// ─── Status badge helper ───────────────────────────────────────────────────────
 const StatusBadge = ({ status }: { status: ProjectStatus }) => {
   if (status === 'live') {
     return (
@@ -94,7 +82,6 @@ const StatusBadge = ({ status }: { status: ProjectStatus }) => {
   );
 };
 
-// ─── Component ────────────────────────────────────────────────────────────────
 export const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -117,88 +104,81 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="section"
+      className="section projects-section"
       ref={sectionRef}
       style={{ backgroundColor: 'var(--bg-tertiary)' }}
     >
       <div className="container">
-        <div style={{ marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Featured Analysis</h2>
+        <div style={{ marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Featured Projects</h2>
           <p style={{ color: 'var(--text-secondary)' }}>
-            Showcasing data-driven solutions and applications.
+            Selected builds — scroll to explore the stack.
           </p>
         </div>
 
-        <div style={styles.grid}>
+        <div className="projects-stack">
           {projectsData.map((project, idx) => (
-            <div
-              key={idx}
-              className="card"
-              style={{
-                ...styles.card,
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transition: `opacity 0.5s ease ${idx * 0.1}s, transform 0.5s ease ${idx * 0.1}s`,
-              }}
+            <article
+              key={project.title}
+              className={`projects-stack-card card ${isVisible ? 'projects-stack-card--visible' : ''}`}
+              style={{ '--stack-index': idx } as React.CSSProperties}
             >
-              {/* Project Image */}
-              <div style={styles.imageContainer}>
-                <img
-                  src={`/${project.image}`}
-                  alt={project.title}
-                  style={styles.image}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      'https://via.placeholder.com/600x400/3d2b1f/d97736?text=Project+Preview';
-                  }}
-                />
-                {/* Status badge overlaid on image */}
-                <div style={styles.badgeOverlay}>
-                  <StatusBadge status={project.status} />
+              <div className="projects-stack-inner">
+                <div style={styles.imageContainer}>
+                  <img
+                    src={`/${project.image}`}
+                    alt={project.title}
+                    style={styles.image}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src =
+                        'https://via.placeholder.com/600x400/3d2b1f/d97736?text=Project+Preview';
+                    }}
+                  />
+                  <div style={styles.badgeOverlay}>
+                    <StatusBadge status={project.status} />
+                  </div>
+                </div>
+
+                <div style={styles.content}>
+                  <h3 style={styles.title}>{project.title}</h3>
+                  <p style={styles.description}>{project.description}</p>
+
+                  <div style={styles.tags}>
+                    {project.tags.map((tag) => (
+                      <span key={tag} style={styles.tag}>{tag}</span>
+                    ))}
+                  </div>
+
+                  <div style={styles.links}>
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={styles.primaryLink}
+                      >
+                        <ExternalLink size={15} /> Live Demo
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={styles.secondaryLink}
+                      >
+                        <FaGithub size={15} /> Source Code
+                      </a>
+                    )}
+                    {project.privateRepo && !project.githubUrl && (
+                      <span style={styles.privateTag}>
+                        <FaLock size={12} /> Private Repo
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
-
-              {/* Card Body */}
-              <div style={styles.content}>
-                <h3 style={styles.title}>{project.title}</h3>
-                <p style={styles.description}>{project.description}</p>
-
-                <div style={styles.tags}>
-                  {project.tags.map((tag, tIdx) => (
-                    <span key={tIdx} style={styles.tag}>{tag}</span>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div style={styles.links}>
-                  {project.status === 'live' && project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={styles.primaryLink}
-                    >
-                      <ExternalLink size={15} /> Live Demo
-                    </a>
-                  )}
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={styles.secondaryLink}
-                    >
-                      <FaGithub size={15} /> Source Code
-                    </a>
-                  )}
-                  {project.privateRepo && !project.githubUrl && (
-                    <span style={styles.privateTag}>
-                      <FaLock size={12} /> Private Repo
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
@@ -206,23 +186,12 @@ export const Projects = () => {
   );
 };
 
-// ─── Styles ───────────────────────────────────────────────────────────────────
 const styles: Record<string, React.CSSProperties> = {
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '2rem',
-  },
-  card: {
-    padding: 0,
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
-  },
   imageContainer: {
-    height: '200px',
+    flex: '0 0 220px',
+    height: '160px',
     overflow: 'hidden',
-    borderBottom: '1px solid var(--border-color)',
+    borderRadius: '0.5rem',
     position: 'relative',
   },
   image: {
@@ -230,43 +199,42 @@ const styles: Record<string, React.CSSProperties> = {
     height: '100%',
     objectFit: 'cover',
     objectPosition: 'top',
-    transition: 'transform 0.5s ease',
   },
   badgeOverlay: {
     position: 'absolute',
-    top: '0.75rem',
-    right: '0.75rem',
+    top: '0.5rem',
+    right: '0.5rem',
   },
   content: {
-    padding: '1.75rem',
+    flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    flex: 1,
+    minWidth: 0,
   },
   title: {
-    fontSize: '1.2rem',
+    fontSize: '1.25rem',
     fontWeight: 600,
-    marginBottom: '0.75rem',
+    marginBottom: '0.5rem',
   },
   description: {
-    color: 'var(--text-secondary)',
-    fontSize: '0.875rem',
-    lineHeight: 1.7,
-    marginBottom: '1.5rem',
-    flex: 1,
+    color: 'var(--text-muted)',
+    fontSize: '0.8rem',
+    fontFamily: 'var(--font-mono)',
+    letterSpacing: '0.02em',
+    marginBottom: '1rem',
   },
   tags: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '0.5rem',
-    marginBottom: '1.75rem',
+    gap: '0.4rem',
+    marginBottom: '1rem',
   },
   tag: {
-    fontSize: '0.7rem',
+    fontSize: '0.65rem',
     fontFamily: 'var(--font-mono)',
     color: 'var(--accent-primary)',
     backgroundColor: 'var(--accent-glow)',
-    padding: '0.25rem 0.6rem',
+    padding: '0.2rem 0.5rem',
     borderRadius: '0.25rem',
   },
   links: {

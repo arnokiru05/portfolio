@@ -62,7 +62,7 @@ export const GithubRepos = () => {
   };
 
   return (
-    <section id="github" className="section" style={{ overflow: 'hidden' }}>
+    <section id="opensource" className="section" style={{ overflow: 'hidden' }}>
       <div className="container">
         <div style={{ marginBottom: '4rem', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Open Source</h2>
