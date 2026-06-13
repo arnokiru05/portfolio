@@ -33,7 +33,12 @@ export const GithubRepos = () => {
 
       try {
         const response = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`
+          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`,
+          {
+            headers: {
+              Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+            },
+          }
         );
 
         if (!response.ok) throw new Error('Failed to fetch from GitHub');
