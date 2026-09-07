@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python (data-projects)
+.venv
+__pycache__/
+*.pyc
