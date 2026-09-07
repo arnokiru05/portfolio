@@ -14,7 +14,7 @@ baseline.
 
 ## How to run
 ```bash
-pip install -r ../requirements.txt
+pip install -r requirements.txt
 python generate_data.py   # writes data/rideshare_demand.csv
 python analysis.py        # writes charts + summary to outputs/
 ```

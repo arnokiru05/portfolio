@@ -39,7 +39,7 @@ const projectsData: Project[] = [
     image: 'retail-analytics.png',
     tags: ['Python', 'pandas', 'EDA', 'Segmentation'],
     status: 'github-only',
-    githubUrl: 'https://github.com/arnokiru05/portfolio/tree/main/data-projects/01-retail-ecommerce-analytics',
+    githubUrl: 'https://github.com/arnokiru05/retail-ecommerce-analytics',
   },
   {
     title: 'Telecom Churn Prediction',
@@ -47,7 +47,7 @@ const projectsData: Project[] = [
     image: 'churn-prediction.png',
     tags: ['Python', 'SciKit-Learn', 'Classification', 'ML'],
     status: 'github-only',
-    githubUrl: 'https://github.com/arnokiru05/portfolio/tree/main/data-projects/02-telecom-churn-prediction',
+    githubUrl: 'https://github.com/arnokiru05/telecom-churn-prediction',
   },
   {
     title: 'Streaming SQL Analytics',
@@ -55,7 +55,7 @@ const projectsData: Project[] = [
     image: 'sql-analytics.png',
     tags: ['SQL', 'SQLite', 'Window Functions', 'pandas'],
     status: 'github-only',
-    githubUrl: 'https://github.com/arnokiru05/portfolio/tree/main/data-projects/03-sql-sales-analytics',
+    githubUrl: 'https://github.com/arnokiru05/streaming-sql-analytics',
   },
   {
     title: 'Ride-Share Demand Forecasting',
@@ -63,7 +63,7 @@ const projectsData: Project[] = [
     image: 'demand-forecasting.png',
     tags: ['Python', 'Time Series', 'SciKit-Learn', 'Forecasting'],
     status: 'github-only',
-    githubUrl: 'https://github.com/arnokiru05/portfolio/tree/main/data-projects/04-timeseries-demand-forecasting',
+    githubUrl: 'https://github.com/arnokiru05/rideshare-demand-forecasting',
   },
   {
     title: 'Hotel Security Analysis',

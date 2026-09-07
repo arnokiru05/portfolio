@@ -21,7 +21,7 @@ views(view_id, user_id → users, title_id → titles, watch_date, minutes_watch
 
 ## How to run
 ```bash
-pip install -r ../requirements.txt
+pip install -r requirements.txt
 python generate_data.py   # builds data/streaming.db
 python run_queries.py     # runs queries.sql, writes charts + summary to outputs/
 ```

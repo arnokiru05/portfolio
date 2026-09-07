@@ -14,7 +14,7 @@ value so marketing spend can be targeted.
 
 ## How to run
 ```bash
-pip install -r ../requirements.txt
+pip install -r requirements.txt
 python generate_data.py   # writes data/online_retail.csv
 python analysis.py        # writes charts + summary to outputs/
 ```

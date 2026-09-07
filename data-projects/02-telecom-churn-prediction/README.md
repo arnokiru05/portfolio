@@ -15,7 +15,7 @@ training → evaluation → interpretation.
 
 ## How to run
 ```bash
-pip install -r ../requirements.txt
+pip install -r requirements.txt
 python generate_data.py   # writes data/telecom_churn.csv
 python analysis.py        # trains models, writes charts + summary to outputs/
 ```
